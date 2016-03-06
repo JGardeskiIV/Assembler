@@ -121,6 +121,7 @@ public class Parser {
      *                  breaking the instruction into its necessary parts
      */
     public void advance() {
+        lineNumber++;
         //  Read the line in
         rawLine = inputFile.nextLine();
         //  Clean it up
@@ -193,14 +194,12 @@ public class Parser {
             case N_INSTRUCTION:
                 break;
             case A_INSTRUCTION:
-                lineNumber++;
                 parseSymbol();
                 break;
             case L_INSTRUCTION:
                 parseSymbol();
                 break;
             case C_INSTRUCTION:
-                lineNumber++;
                 parseComp();
                 parseDest();
                 parseJump();
