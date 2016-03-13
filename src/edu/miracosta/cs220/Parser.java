@@ -14,8 +14,7 @@
  *                          getRawLine(), getCleanLine(), getLineNumber()
  *
  *                Private:  cleanLine(), parseCommandType(), parse(),
- *                          parseSymbol(), parseDest(), parseComp(), parseJump(),
- *                          resetCommandParts()
+ *                          parseSymbol(), parseDest(), parseComp(), parseJump()
  *
  * Notes:
  *
@@ -194,8 +193,6 @@ public class Parser {
             case N_INSTRUCTION:
                 break;
             case A_INSTRUCTION:
-                parseSymbol();
-                break;
             case L_INSTRUCTION:
                 parseSymbol();
                 break;
@@ -230,14 +227,19 @@ public class Parser {
      */
     private void parseComp() {
         //  TODO - Does this need to be error-checked? what if semi-colon at the end? Or '=' or ';' is missing?
-        //  Check dest=comp
-        int splitIndex = cleanLine.indexOf('=');
-        if (splitIndex != -1) {
-            compMnemonic = cleanLine.substring(splitIndex + 1);
+        int eqIndex = cleanLine.indexOf('=');
+        int scIndex = cleanLine.indexOf(';');
+        if (eqIndex != -1) {
+            if (scIndex == -1) {
+                //  dest=comp
+                compMnemonic = cleanLine.substring(eqIndex + 1);
+            } else {
+                //  dest=comp;jmp
+                compMnemonic = cleanLine.substring(eqIndex + 1, scIndex);
+            }
         } else {
-            //  Check comp;jump
-            splitIndex = cleanLine.indexOf(';');
-            compMnemonic = cleanLine.substring(0, splitIndex);
+            //  comp;jmp
+            compMnemonic = cleanLine.substring(0, scIndex);
         }
     }
 

@@ -36,9 +36,9 @@ public class Code {
      * POSTCONDITION:   all hashmaps have lookups for valid codes
      */
     Code() {
-        compCodes = new HashMap<String, String>();
-        destCodes = new HashMap<String, String>();
-        jumpCodes = new HashMap<String, String>();
+        compCodes = new HashMap<>();
+        destCodes = new HashMap<>();
+        jumpCodes = new HashMap<>();
         //  Build compCodes table
         compCodes.put("0",   "0101010");
         compCodes.put("1",   "0111111");
@@ -54,20 +54,26 @@ public class Code {
         compCodes.put("D-1", "0001110");
         compCodes.put("A-1", "0110010");
         compCodes.put("D+A", "0000010");
+        compCodes.put("A+D", "0000010");
         compCodes.put("D-A", "0010011");
         compCodes.put("A-D", "0000111");
         compCodes.put("D&A", "0000000");
+        compCodes.put("A&D", "0000000");
         compCodes.put("D|A", "0010101");
+        compCodes.put("A|D", "0010101");
         compCodes.put("M",   "1110000");
         compCodes.put("!M",  "1110001");
         compCodes.put("-M",  "1110011");
         compCodes.put("M+1", "1110111");
         compCodes.put("M-1", "1110010");
         compCodes.put("D+M", "1000010");
+        compCodes.put("M+D", "1000010");
         compCodes.put("D-M", "1010011");
         compCodes.put("M-D", "1000111");
         compCodes.put("D&M", "1000000");
+        compCodes.put("M&D", "1000000");
         compCodes.put("D|M", "1010101");
+        compCodes.put("M|D", "1010101");
         //  Build destCodes table
         destCodes.put("null", "000");
         destCodes.put("M",    "001");

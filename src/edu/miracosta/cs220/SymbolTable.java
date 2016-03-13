@@ -41,7 +41,7 @@ public class SymbolTable {
      * POSTCONDITION:   symbolTable has lookups for all valid predefined symbols
      */
     public SymbolTable() {
-        symbolTable = new HashMap<String, Integer>();
+        symbolTable = new HashMap<>();
         //  Virtual Registers
         symbolTable.put("R0", 0);
         symbolTable.put("R1", 1);
